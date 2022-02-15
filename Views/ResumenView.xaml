@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="InformeProyectos.Views.ResumenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InformeProyectos.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock Text="INFORMES" TextAlignment="Center" FontSize="40" FontWeight="SemiBold"/>
+        <TextBlock Text="CONSULTAS" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="25"/>
+        <TextBlock Margin="0" Text="ID DE DEPARTAMENTO" HorizontalAlignment="Center"/>
+
+        <TextBox Width="120" Text="{Binding IdDpto}" />
+        <Button Content="CONSULTA" Width="120" Command="{Binding ReportsCommand}"
+                                                CommandParameter="idDpto"/>
+
+        <TextBlock Margin="0,20,0,0" Text="FECHAS" HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Margin="5" VerticalAlignment="Center" Text="FECHA 1"/>
+            <DatePicker SelectedDate="{Binding fecha1, StringFormat=dd/MM/yyyy}"/>
+            <TextBlock Margin="5" VerticalAlignment="Center" Text="FECHA 2"/>
+            <DatePicker SelectedDate="{Binding fecha2, StringFormat=dd/MM/yyyy}" />
+        </StackPanel>
+        <Button Content="CONSULTA" Width="120" 
+                Command="{Binding ReportsCommand}"
+                CommandParameter="fechas"/>
+
+
+
+        <TextBlock Text="ALTAS" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="25"/>
+        <TextBlock Margin="0" Text="DEPARTAMENTO" HorizontalAlignment="Center"/>
+        <TextBox Width="120" Text="{Binding txtDpto}"/>
+        <Button Width="120" Content="CREAR" Command="{Binding DataBaseCommand}"/>
+    </StackPanel>
+</UserControl>
