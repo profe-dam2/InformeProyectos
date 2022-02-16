@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InformeProyectos.Models
+{
+    public class DptoModel
+    {
+        public int idDpto { set; get; }
+        public string nombreDpto { set; get; }
+    }
+}

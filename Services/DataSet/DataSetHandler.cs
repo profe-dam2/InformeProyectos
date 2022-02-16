@@ -1,6 +1,8 @@
-﻿using InformeProyectos.Services.DataSet.ProyectoDataSetTableAdapters;
+﻿using InformeProyectos.Models;
+using InformeProyectos.Services.DataSet.ProyectoDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,19 @@ namespace InformeProyectos.Services.DataSet
         public static void insertaDpto(string nombreDpto)
         {
             dptoAdapter.Insert(nombreDpto);
+        }
+
+        public static ObservableCollection<DptoModel> getDptos()
+        {
+            DataTable dptos = dptoAdapter.GetData();
+            ObservableCollection<DptoModel> listaDptos = new ObservableCollection<DptoModel>();
+            foreach(var dpto in dptos.Rows)
+            {
+                DptoModel myDpto = new DptoModel();
+               
+                listaDptos.Add(myDpto);
+            }
+            return listaDptos;
         }
     }
 }

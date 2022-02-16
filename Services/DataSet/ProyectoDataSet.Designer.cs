@@ -2043,16 +2043,13 @@ namespace InformeProyectos.Services.DataSet {
                 this.columnidDpto.AutoIncrementStep = -1;
                 this.columnidDpto.AllowDBNull = false;
                 this.columnidDpto.ReadOnly = true;
-                this.columnnombreDpto.AllowDBNull = false;
                 this.columnnombreDpto.MaxLength = 50;
                 this.columnidEmpleado.AutoIncrement = true;
                 this.columnidEmpleado.AutoIncrementSeed = -1;
                 this.columnidEmpleado.AutoIncrementStep = -1;
                 this.columnidEmpleado.AllowDBNull = false;
                 this.columnidEmpleado.ReadOnly = true;
-                this.columndni.AllowDBNull = false;
                 this.columndni.MaxLength = 50;
-                this.columnnombreEmpleado.AllowDBNull = false;
                 this.columnnombreEmpleado.MaxLength = 50;
                 this.columndireccionEmpleado.MaxLength = 50;
                 this.columntelefono.MaxLength = 50;
@@ -2061,14 +2058,9 @@ namespace InformeProyectos.Services.DataSet {
                 this.columnidProyecto.AutoIncrementStep = -1;
                 this.columnidProyecto.AllowDBNull = false;
                 this.columnidProyecto.ReadOnly = true;
-                this.columnnombreProyecto.AllowDBNull = false;
                 this.columnnombreProyecto.MaxLength = 50;
                 this.columntipoProyecto.MaxLength = 50;
                 this.columnciudadProyecto.MaxLength = 50;
-                this.columnfechaInicio.AllowDBNull = false;
-                this.columnfechaFin.AllowDBNull = false;
-                this.columnidProyecto1.AllowDBNull = false;
-                this.columnidEmpleado1.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2650,7 +2642,12 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string nombreDpto {
                 get {
-                    return ((string)(this[this.tableInformes.nombreDptoColumn]));
+                    try {
+                        return ((string)(this[this.tableInformes.nombreDptoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombreDpto\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.nombreDptoColumn] = value;
@@ -2672,7 +2669,12 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string dni {
                 get {
-                    return ((string)(this[this.tableInformes.dniColumn]));
+                    try {
+                        return ((string)(this[this.tableInformes.dniColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'dni\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.dniColumn] = value;
@@ -2683,7 +2685,12 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string nombreEmpleado {
                 get {
-                    return ((string)(this[this.tableInformes.nombreEmpleadoColumn]));
+                    try {
+                        return ((string)(this[this.tableInformes.nombreEmpleadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombreEmpleado\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.nombreEmpleadoColumn] = value;
@@ -2769,7 +2776,12 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string nombreProyecto {
                 get {
-                    return ((string)(this[this.tableInformes.nombreProyectoColumn]));
+                    try {
+                        return ((string)(this[this.tableInformes.nombreProyectoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombreProyecto\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.nombreProyectoColumn] = value;
@@ -2812,7 +2824,12 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime fechaInicio {
                 get {
-                    return ((global::System.DateTime)(this[this.tableInformes.fechaInicioColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableInformes.fechaInicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fechaInicio\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.fechaInicioColumn] = value;
@@ -2823,7 +2840,12 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime fechaFin {
                 get {
-                    return ((global::System.DateTime)(this[this.tableInformes.fechaFinColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableInformes.fechaFinColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fechaFin\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.fechaFinColumn] = value;
@@ -2834,7 +2856,12 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int idProyecto1 {
                 get {
-                    return ((int)(this[this.tableInformes.idProyecto1Column]));
+                    try {
+                        return ((int)(this[this.tableInformes.idProyecto1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'idProyecto1\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.idProyecto1Column] = value;
@@ -2845,11 +2872,52 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int idEmpleado1 {
                 get {
-                    return ((int)(this[this.tableInformes.idEmpleado1Column]));
+                    try {
+                        return ((int)(this[this.tableInformes.idEmpleado1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'idEmpleado1\' de la tabla \'Informes\' es DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInformes.idEmpleado1Column] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsnombreDptoNull() {
+                return this.IsNull(this.tableInformes.nombreDptoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetnombreDptoNull() {
+                this[this.tableInformes.nombreDptoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdniNull() {
+                return this.IsNull(this.tableInformes.dniColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdniNull() {
+                this[this.tableInformes.dniColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsnombreEmpleadoNull() {
+                return this.IsNull(this.tableInformes.nombreEmpleadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetnombreEmpleadoNull() {
+                this[this.tableInformes.nombreEmpleadoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2902,6 +2970,18 @@ namespace InformeProyectos.Services.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsnombreProyectoNull() {
+                return this.IsNull(this.tableInformes.nombreProyectoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetnombreProyectoNull() {
+                this[this.tableInformes.nombreProyectoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IstipoProyectoNull() {
                 return this.IsNull(this.tableInformes.tipoProyectoColumn);
             }
@@ -2922,6 +3002,54 @@ namespace InformeProyectos.Services.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetciudadProyectoNull() {
                 this[this.tableInformes.ciudadProyectoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsfechaInicioNull() {
+                return this.IsNull(this.tableInformes.fechaInicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetfechaInicioNull() {
+                this[this.tableInformes.fechaInicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsfechaFinNull() {
+                return this.IsNull(this.tableInformes.fechaFinColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetfechaFinNull() {
+                this[this.tableInformes.fechaFinColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsidProyecto1Null() {
+                return this.IsNull(this.tableInformes.idProyecto1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetidProyecto1Null() {
+                this[this.tableInformes.idProyecto1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsidEmpleado1Null() {
+                return this.IsNull(this.tableInformes.idEmpleado1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetidEmpleado1Null() {
+                this[this.tableInformes.idEmpleado1Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4708,12 +4836,12 @@ FROM            departamento INNER JOIN
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        departamento.*, empleado.*, proyecto.*, proyecto_empleado.*
+            this._commandCollection[1].CommandText = @"SELECT  DISTINCT       proyecto.idProyecto, proyecto.nombreProyecto, proyecto.tipoProyecto, proyecto.ciudadProyecto, proyecto.fechaInicio, proyecto.fechaFin
 FROM            departamento INNER JOIN
                          empleado ON departamento.idDpto = empleado.idDpto1 INNER JOIN
                          proyecto_empleado ON empleado.idEmpleado = proyecto_empleado.idEmpleado1 INNER JOIN
                          proyecto ON proyecto_empleado.idProyecto1 = proyecto.idProyecto
-WHERE proyecto.fechaInicio BETWEEN @fecha1 AND @fecha2";
+WHERE        (proyecto.fechaInicio BETWEEN @fecha1 AND @fecha2)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha1", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fechaInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha2", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fechaInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4790,9 +4918,14 @@ WHERE proyecto.idProyecto = @idProyecto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ProyectoDataSet.InformesDataTable GetDataByIdDpto(int idDpto) {
+        public virtual ProyectoDataSet.InformesDataTable GetDataByIdDpto(global::System.Nullable<int> idDpto) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idDpto));
+            if ((idDpto.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idDpto.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             ProyectoDataSet.InformesDataTable dataTable = new ProyectoDataSet.InformesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -4802,9 +4935,14 @@ WHERE proyecto.idProyecto = @idProyecto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ProyectoDataSet.InformesDataTable GetDataByIdProyecto(int idProyecto) {
+        public virtual ProyectoDataSet.InformesDataTable GetDataByIdProyecto(global::System.Nullable<int> idProyecto) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idProyecto));
+            if ((idProyecto.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idProyecto.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             ProyectoDataSet.InformesDataTable dataTable = new ProyectoDataSet.InformesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

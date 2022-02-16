@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InformeProyectos.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="800">
     <StackPanel>
         <TextBlock Text="INFORMES" TextAlignment="Center" FontSize="40" FontWeight="SemiBold"/>
         <TextBlock Text="CONSULTAS" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="25"/>
@@ -30,8 +30,50 @@
 
 
         <TextBlock Text="ALTAS" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="25"/>
-        <TextBlock Margin="0" Text="DEPARTAMENTO" HorizontalAlignment="Center"/>
-        <TextBox Width="120" Text="{Binding txtDpto}"/>
-        <Button Width="120" Content="CREAR" Command="{Binding DataBaseCommand}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock  Margin="0" Text="DEPARTAMENTO" HorizontalAlignment="Center"/>
+                <TextBox Width="120" Text="{Binding txtDpto}"/>
+                <Button Width="120" Content="CREAR" Command="{Binding DataBaseCommand}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock  Margin="0" Text="USUARIO" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="DNI" HorizontalAlignment="Right" Margin="5"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Empleado.DNI}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="NOMBRE" HorizontalAlignment="Right" Margin="5"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Empleado.DNI}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="DIRECCION" HorizontalAlignment="Right" Margin="5"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Empleado.DNI}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="TELEFONO" HorizontalAlignment="Right" Margin="5"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Empleado.DNI}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="FECHA NACIMIENTO" HorizontalAlignment="Right" Margin="5"/>
+                    <DatePicker Grid.Row="4" Grid.Column="1" Margin="5" Text="{Binding Empleado.DNI}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="DEPARTAMENTO" HorizontalAlignment="Right" Margin="5"/>
+                    <ComboBox Grid.Row="5" Grid.Column="1" Margin="5" ItemsSource="{Binding ListaDepartamentos}"/>
+                    
+                </Grid>
+                <Button Content="CREAR" Width="200"/>
+            </StackPanel>
+        </Grid>
+        
+        
     </StackPanel>
 </UserControl>
