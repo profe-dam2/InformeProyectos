@@ -72,7 +72,7 @@
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -93,11 +93,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ChangeEmpleadoCommand.cs" />
     <Compile Include="Commands\DataBaseCommand.cs" />
+    <Compile Include="Commands\DeleteDptoCommand.cs" />
+    <Compile Include="Commands\InsertEmpleadoCommand.cs" />
     <Compile Include="Commands\ReportsCommand.cs" />
     <Compile Include="Commands\UpdateDptoCommand.cs" />
+    <Compile Include="Commands\UpdateEmpleadosCommand.cs" />
     <Compile Include="Commands\UpdateViewCommand.cs" />
     <Compile Include="Models\DptoModel.cs" />
+    <Compile Include="Models\EmpleadoModel.cs" />
     <Compile Include="Services\DataSet\DataSetHandler.cs" />
     <Compile Include="Services\DataSet\ProyectoDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +161,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\InformeDpto.rdlc" />
     <EmbeddedResource Include="Reports\InformeFechas.rdlc" />
+    <EmbeddedResource Include="Reports\InformeProyecto.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

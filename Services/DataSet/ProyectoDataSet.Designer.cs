@@ -3397,11 +3397,21 @@ namespace InformeProyectos.Services.DataSet.ProyectoDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idDpto, nombreDpto FROM dbo.departamento";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT idDpto, nombreDpto FROM dbo.departamento\r\nWHERE idDpto = @idDpto";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idDpto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idDpto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT idDpto, nombreDpto FROM dbo.departamento\r\nWHERE nombreDpto = @nombreDpto";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombreDpto", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "nombreDpto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3423,6 +3433,35 @@ namespace InformeProyectos.Services.DataSet.ProyectoDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ProyectoDataSet.departamentoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ProyectoDataSet.departamentoDataTable dataTable = new ProyectoDataSet.departamentoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProyectoDataSet.departamentoDataTable GetDataByIdDpto(int idDpto) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idDpto));
+            ProyectoDataSet.departamentoDataTable dataTable = new ProyectoDataSet.departamentoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProyectoDataSet.departamentoDataTable GetDataByNombreDpto(string nombreDpto) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((nombreDpto == null)) {
+                throw new global::System.ArgumentNullException("nombreDpto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nombreDpto));
+            }
             ProyectoDataSet.departamentoDataTable dataTable = new ProyectoDataSet.departamentoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -3746,12 +3785,26 @@ SELECT idEmpleado, dni, nombreEmpleado, direccionEmpleado, telefono, fechaNacimi
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idEmpleado, dni, nombreEmpleado, direccionEmpleado, telefono, fechaNacimie" +
                 "nto, idDpto1 FROM dbo.empleado";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"UPDATE       empleado
+SET                dni = @dni, nombreEmpleado = @nombreEmpleado, direccionEmpleado = @direccionEmpleado, telefono = @telefono, fechaNacimiento = @fechaNacimiento, idDpto1 = @idDpto1
+WHERE        (idEmpleado = @idEmpleado); 
+SELECT idEmpleado, dni, nombreEmpleado, direccionEmpleado, telefono, fechaNacimiento, idDpto1 FROM empleado WHERE (idEmpleado = @idEmpleado)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dni", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "dni", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nombreEmpleado", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "nombreEmpleado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@direccionEmpleado", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "direccionEmpleado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@telefono", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "telefono", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fechaNacimiento", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fechaNacimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idDpto1", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idDpto1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idEmpleado", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idEmpleado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4039,6 +4092,66 @@ SELECT idEmpleado, dni, nombreEmpleado, direccionEmpleado, telefono, fechaNacimi
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string dni, string nombreEmpleado, string direccionEmpleado, string telefono, global::System.Nullable<global::System.DateTime> fechaNacimiento, global::System.Nullable<int> idDpto1, int Original_idEmpleado, string Original_dni, string Original_nombreEmpleado, string Original_direccionEmpleado, string Original_telefono, global::System.Nullable<global::System.DateTime> Original_fechaNacimiento, global::System.Nullable<int> Original_idDpto1) {
             return this.Update(dni, nombreEmpleado, direccionEmpleado, telefono, fechaNacimiento, idDpto1, Original_idEmpleado, Original_dni, Original_nombreEmpleado, Original_direccionEmpleado, Original_telefono, Original_fechaNacimiento, Original_idDpto1, Original_idEmpleado);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateEmpleado(string dni, string nombreEmpleado, string direccionEmpleado, string telefono, string fechaNacimiento, global::System.Nullable<int> idDpto1, int idEmpleado) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((dni == null)) {
+                throw new global::System.ArgumentNullException("dni");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(dni));
+            }
+            if ((nombreEmpleado == null)) {
+                throw new global::System.ArgumentNullException("nombreEmpleado");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(nombreEmpleado));
+            }
+            if ((direccionEmpleado == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(direccionEmpleado));
+            }
+            if ((telefono == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(telefono));
+            }
+            if ((fechaNacimiento == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(fechaNacimiento));
+            }
+            if ((idDpto1.HasValue == true)) {
+                command.Parameters[5].Value = ((int)(idDpto1.Value));
+            }
+            else {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            command.Parameters[6].Value = ((int)(idEmpleado));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -4825,7 +4938,7 @@ SELECT idProyecto, nombreProyecto, tipoProyecto, ciudadProyecto, fechaInicio, fe
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        departamento.*, empleado.*, proyecto.*, proyecto_empleado.*
@@ -4836,25 +4949,26 @@ FROM            departamento INNER JOIN
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT  DISTINCT       proyecto.idProyecto, proyecto.nombreProyecto, proyecto.tipoProyecto, proyecto.ciudadProyecto, proyecto.fechaInicio, proyecto.fechaFin
+            this._commandCollection[1].CommandText = @"SELECT        departamento.*, empleado.*, proyecto.*, proyecto_empleado.*
+FROM            departamento INNER JOIN
+                         empleado ON departamento.idDpto = empleado.idDpto1 INNER JOIN
+                         proyecto_empleado ON empleado.idEmpleado = proyecto_empleado.idEmpleado1 INNER JOIN
+                         proyecto ON proyecto_empleado.idProyecto1 = proyecto.idProyecto
+WHERE proyecto.idProyecto = @idProyecto AND departamento.idDpto = @idDpto";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idDpto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idDpto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT  DISTINCT       proyecto.idProyecto, proyecto.nombreProyecto, proyecto.tipoProyecto, proyecto.ciudadProyecto, proyecto.fechaInicio, proyecto.fechaFin
 FROM            departamento INNER JOIN
                          empleado ON departamento.idDpto = empleado.idDpto1 INNER JOIN
                          proyecto_empleado ON empleado.idEmpleado = proyecto_empleado.idEmpleado1 INNER JOIN
                          proyecto ON proyecto_empleado.idProyecto1 = proyecto.idProyecto
 WHERE        (proyecto.fechaInicio BETWEEN @fecha1 AND @fecha2)";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha1", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fechaInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha2", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fechaInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT        departamento.*, empleado.*, proyecto.*, proyecto_empleado.*
-FROM            departamento INNER JOIN
-                         empleado ON departamento.idDpto = empleado.idDpto1 INNER JOIN
-                         proyecto_empleado ON empleado.idEmpleado = proyecto_empleado.idEmpleado1 INNER JOIN
-                         proyecto ON proyecto_empleado.idProyecto1 = proyecto.idProyecto
-WHERE departamento.idDpto = @idDpto";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idDpto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idDpto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha1", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fechaInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha2", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fechaInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = @"SELECT        departamento.*, empleado.*, proyecto.*, proyecto_empleado.*
@@ -4862,9 +4976,19 @@ FROM            departamento INNER JOIN
                          empleado ON departamento.idDpto = empleado.idDpto1 INNER JOIN
                          proyecto_empleado ON empleado.idEmpleado = proyecto_empleado.idEmpleado1 INNER JOIN
                          proyecto ON proyecto_empleado.idProyecto1 = proyecto.idProyecto
-WHERE proyecto.idProyecto = @idProyecto";
+WHERE departamento.idDpto = @idDpto";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idDpto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idDpto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"SELECT        departamento.*, empleado.*, proyecto.*, proyecto_empleado.*
+FROM            departamento INNER JOIN
+                         empleado ON departamento.idDpto = empleado.idDpto1 INNER JOIN
+                         proyecto_empleado ON empleado.idEmpleado = proyecto_empleado.idEmpleado1 INNER JOIN
+                         proyecto ON proyecto_empleado.idProyecto1 = proyecto.idProyecto
+WHERE proyecto.idProyecto = @idProyecto";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProyecto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProyecto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4895,8 +5019,21 @@ WHERE proyecto.idProyecto = @idProyecto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ProyectoDataSet.InformesDataTable GetDataByFechas(string fecha1, string fecha2) {
+        public virtual ProyectoDataSet.InformesDataTable GetDataByDptoProyecto(int idProyecto, int idDpto) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idProyecto));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(idDpto));
+            ProyectoDataSet.InformesDataTable dataTable = new ProyectoDataSet.InformesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ProyectoDataSet.InformesDataTable GetDataByFechas(string fecha1, string fecha2) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((fecha1 == null)) {
                 throw new global::System.ArgumentNullException("fecha1");
             }
@@ -4919,7 +5056,7 @@ WHERE proyecto.idProyecto = @idProyecto";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual ProyectoDataSet.InformesDataTable GetDataByIdDpto(global::System.Nullable<int> idDpto) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((idDpto.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idDpto.Value));
             }
@@ -4935,14 +5072,9 @@ WHERE proyecto.idProyecto = @idProyecto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual ProyectoDataSet.InformesDataTable GetDataByIdProyecto(global::System.Nullable<int> idProyecto) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            if ((idProyecto.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idProyecto.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+        public virtual ProyectoDataSet.InformesDataTable GetDataByIdProyecto(int idProyecto) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idProyecto));
             ProyectoDataSet.InformesDataTable dataTable = new ProyectoDataSet.InformesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

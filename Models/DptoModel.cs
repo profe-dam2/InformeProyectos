@@ -10,5 +10,10 @@ namespace InformeProyectos.Models
     {
         public int idDpto { set; get; }
         public string nombreDpto { set; get; }
+
+        public override string ToString()
+        {
+            return nombreDpto;
+        }
     }
 }

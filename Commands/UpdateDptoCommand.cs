@@ -1,4 +1,5 @@
-﻿using InformeProyectos.ViewModels;
+﻿using InformeProyectos.Services.DataSet;
+using InformeProyectos.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace InformeProyectos.Commands
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            resumenViewModel.ListaDepartamentos = DataSetHandler.getDptos();
         }
         public ResumenViewModel resumenViewModel { set; get; }
         public UpdateDptoCommand(ResumenViewModel resumenViewModel)

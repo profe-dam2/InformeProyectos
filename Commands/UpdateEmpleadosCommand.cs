@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace InformeProyectos.Commands
 {
-    class DataBaseCommand : ICommand
+    class UpdateEmpleadosCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -21,19 +20,11 @@ namespace InformeProyectos.Commands
 
         public void Execute(object parameter)
         {
-            bool okInsertar = DataSetHandler.insertaDpto(resumenViewModel.TxtDpto);
-            if (okInsertar) {
-                resumenViewModel.TxtDpto = "";
-            }
-            else
-            {
-                MessageBox.Show("El departamento ya existe. Pon otro nombre");
-            }
-
+            resumenViewModel.ListaEmpleados = DataSetHandler.GetEmpleados();
         }
 
         public ResumenViewModel resumenViewModel { set; get; }
-        public DataBaseCommand(ResumenViewModel resumenViewModel)
+        public UpdateEmpleadosCommand(ResumenViewModel resumenViewModel)
         {
             this.resumenViewModel = resumenViewModel;
         }

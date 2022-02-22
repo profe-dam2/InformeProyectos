@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace InformeProyectos.Commands
 {
-    class DataBaseCommand : ICommand
+    class ChangeEmpleadoCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -21,19 +21,21 @@ namespace InformeProyectos.Commands
 
         public void Execute(object parameter)
         {
-            bool okInsertar = DataSetHandler.insertaDpto(resumenViewModel.TxtDpto);
-            if (okInsertar) {
-                resumenViewModel.TxtDpto = "";
+            bool okActualizar = DataSetHandler.actualizarEmpleado(resumenViewModel.Empleado);
+            if (okActualizar)
+            {
+                resumenViewModel.UpdateEmpleadosCommand.Execute("");
+                MessageBox.Show("Se actualizó el empleado");
+
             }
             else
             {
-                MessageBox.Show("El departamento ya existe. Pon otro nombre");
+                MessageBox.Show("Fallo al actualizar");
+
             }
-
         }
-
         public ResumenViewModel resumenViewModel { set; get; }
-        public DataBaseCommand(ResumenViewModel resumenViewModel)
+        public ChangeEmpleadoCommand(ResumenViewModel resumenViewModel)
         {
             this.resumenViewModel = resumenViewModel;
         }

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace InformeProyectos.Commands
 {
-    class DataBaseCommand : ICommand
+    class DeleteDptoCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -21,19 +21,26 @@ namespace InformeProyectos.Commands
 
         public void Execute(object parameter)
         {
-            bool okInsertar = DataSetHandler.insertaDpto(resumenViewModel.TxtDpto);
-            if (okInsertar) {
-                resumenViewModel.TxtDpto = "";
+            if(resumenViewModel.SelectedDpto != null){
+                bool okResult = DataSetHandler.BorrarDpto(resumenViewModel.SelectedDpto);
+                if (okResult)
+                {
+                    resumenViewModel.UpdateDptoCommand.Execute(null);
+                    MessageBox.Show("Departamento eliminado");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar");
+                }
             }
             else
             {
-                MessageBox.Show("El departamento ya existe. Pon otro nombre");
+                MessageBox.Show("Selecciona un departamento");
             }
-
+            
         }
-
         public ResumenViewModel resumenViewModel { set; get; }
-        public DataBaseCommand(ResumenViewModel resumenViewModel)
+        public DeleteDptoCommand(ResumenViewModel resumenViewModel)
         {
             this.resumenViewModel = resumenViewModel;
         }

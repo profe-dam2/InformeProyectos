@@ -1,4 +1,5 @@
-﻿using InformeProyectos.Services.DataSet;
+﻿using InformeProyectos.Models;
+using InformeProyectos.Services.DataSet;
 using InformeProyectos.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace InformeProyectos.Commands
 {
-    class DataBaseCommand : ICommand
+    class InsertEmpleadoCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -21,19 +22,20 @@ namespace InformeProyectos.Commands
 
         public void Execute(object parameter)
         {
-            bool okInsertar = DataSetHandler.insertaDpto(resumenViewModel.TxtDpto);
-            if (okInsertar) {
-                resumenViewModel.TxtDpto = "";
+            bool okInsertar = DataSetHandler.insertarEmpleado(resumenViewModel.Empleado);
+            if (okInsertar)
+            {
+                resumenViewModel.Empleado = new EmpleadoModel();
+                resumenViewModel.Empleado.Fecha = DateTime.Today;
+
             }
             else
             {
-                MessageBox.Show("El departamento ya existe. Pon otro nombre");
+                MessageBox.Show("Error muy peligroso");
             }
-
         }
-
         public ResumenViewModel resumenViewModel { set; get; }
-        public DataBaseCommand(ResumenViewModel resumenViewModel)
+        public InsertEmpleadoCommand(ResumenViewModel resumenViewModel)
         {
             this.resumenViewModel = resumenViewModel;
         }
